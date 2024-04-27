@@ -19,7 +19,7 @@ app.get("/", (req, res) => res.send("Hello World!"));
 
 app.get("/getCoords", authenticate, async (req, res, next) => {
   try {
-    const coords = await Coordinates.find().limit(50);
+    const coords = await Coordinates.find().sort({ CreatedAt: -1 }).limit(1);
     res.json(coords);
   } catch (err) {
     console.error(err);
